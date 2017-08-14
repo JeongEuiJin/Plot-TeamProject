@@ -1,11 +1,12 @@
-#Plot(전시회소개 팀프로젝트)
+
+# Plot(전시회소개 팀프로젝트)
 
 
-##Get Started
+## Get Started
 
 We use **Python** language and **Django** framework
 
-##Function
+## Function
 
 *The current project will be continuously updated.*
 
@@ -16,7 +17,7 @@ We use **Python** language and **Django** framework
 5. User Remove(secession
 )
 
-##Structure
+## Structure
 
 There is a private file below.
 
@@ -28,7 +29,7 @@ There is a private file below.
                --- settings_deploy.json
 ```
 
-##Install Package
+## Install Package
 
 * Python = 3.6.1
 * Django = 1.11.3
@@ -41,6 +42,6 @@ There is a private file below.
 
 
 -
-#아직 작성중이라 계속 업데이트를 할예정입니다.
+# 아직 작성중이라 계속 업데이트를 할예정입니다.
 
 

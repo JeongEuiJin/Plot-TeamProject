@@ -62,7 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=20)
     nickname = models.CharField(max_length=20)
     email = models.EmailField(_('email address'), unique=True)
-    img_profile = models.ImageField(upload_to='user/', null=True, blank=True)
+    img_profile = models.ImageField(upload_to='user/', null=True, blank=True, default='defult_img/profiledefault.png')
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
@@ -99,3 +99,4 @@ class User(AbstractBaseUser, PermissionsMixin):
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
+
