@@ -20,6 +20,7 @@ from .serializers import UserSerializer, UserCreationSerializer, UserLoginSerial
 
 User = get_user_model()
 
+
 class TokenUserInfoAPIView(APIView):
     def post(self, request):
         token_string = request.data.get('token')
@@ -31,6 +32,7 @@ class TokenUserInfoAPIView(APIView):
 
         return Response(UserSerializer(user).data)
 
+
 class UserLogin(APIView):
     permission_classes = (AllowAny,)
 
@@ -38,9 +40,11 @@ class UserLogin(APIView):
         serial_data = UserLoginSerializer(request.data)
         plot_user = authenticate(email=serial_data.data["email"],
                                  password=serial_data.data["password"])
+        print('plot: {}'.format(serial_data))
         if plot_user:
             token = Token.objects.get_or_create(user=plot_user)[0]
-            return Response({"token": token.key}, status=status.HTTP_200_OK)
+            pk = plot_user.id
+            return Response({"pk": pk, "token": token.key}, status=status.HTTP_200_OK)
         return Response({"error": "아이디 혹은 비밀번호가 올바르지 않습니다."}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -62,11 +66,10 @@ class UserLogout(APIView):
         return Response({"detail": _("로그아웃 되었습니다.")},
                         status=status.HTTP_200_OK)
 
+
 class UserSignUp(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = UserCreationSerializer
-
-
 
 
 class UserListCreateView(generics.ListCreateAPIView):
@@ -86,6 +89,7 @@ class UserRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
         permissions.IsAuthenticated,
         ObjectIsRequestUser,
     )
+
 
 class UserDetailView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
