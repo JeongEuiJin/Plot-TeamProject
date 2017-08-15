@@ -50,6 +50,7 @@ FACEBOOK_SECRET_CODE = config_secret_common['facebook']['FACEBOOK_SECRET_CODE']
 # CORS Settings
 CORS_ORIGIN_WHITELIST = (
     'localhost:8000',
+    'plot.ejjeong.com',
 )
 
 
