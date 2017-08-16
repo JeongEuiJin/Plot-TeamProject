@@ -26,4 +26,4 @@ RUN         /root/.pyenv/versions/Deploy-PlotTP/bin/python /srv/Deploy-PlotTP/dj
 
 CMD         supervisord -n
 
-EXPOSE      80 8000
+EXPOSE      80 8000 8080
