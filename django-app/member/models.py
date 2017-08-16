@@ -45,9 +45,6 @@ class UserManager(BaseUserManager):
             email='{}@facebook.com'.format(user_info['id']),
             username=user_info['id'],
             nickname=user_info['id'],
-            first_name=user_info.get('first_name', ''),
-            last_name=user_info.get('last_name', ''),
-            img_profile=user_info['picture']['data']['url'],
             user_type=User.USER_TYPE_FACEBOOK
         )
 

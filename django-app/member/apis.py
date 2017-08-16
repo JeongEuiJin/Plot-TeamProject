@@ -22,6 +22,7 @@ User = get_user_model()
 
 
 class TokenUserInfoAPIView(APIView):
+    permission_classes = (AllowAny,)
     def post(self, request):
         token_string = request.data.get('token')
         try:
@@ -44,7 +45,11 @@ class UserLogin(APIView):
         if plot_user:
             token = Token.objects.get_or_create(user=plot_user)[0]
             pk = plot_user.id
-            return Response({"pk": pk, "token": token.key}, status=status.HTTP_200_OK)
+            nick_name = plot_user.nickname
+            return Response({"pk": pk,
+                             "nick_name": nick_name,
+                             "token": token.key,
+                             }, status=status.HTTP_200_OK)
         return Response({"error": "아이디 혹은 비밀번호가 올바르지 않습니다."}, status=status.HTTP_400_BAD_REQUEST)
 
 
