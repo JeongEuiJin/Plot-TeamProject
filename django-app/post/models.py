@@ -22,6 +22,7 @@ class Post(models.Model):
     )
     AREA_CHOICES = (
         ('seoul', '서울'),
+        ('busan', '부산'),
         ('incheon', '인천'),
         ('daejeon', '대전'),
         ('daegu', '대구'),
