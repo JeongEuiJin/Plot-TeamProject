@@ -40,6 +40,7 @@ class Post(models.Model):
     poster_img = models.ImageField(upload_to='poster/post_img/')
     genre = models.CharField(max_length=50,choices=GENRE_CHOICES,help_text='장르 선택', default='art')
     grade = models.IntegerField(choices=GRADE_CHOICES, help_text='관람 선택', default=0)
+    poster_description = models.CharField(max_length=500, blank=True,null=True)
     fee = models.IntegerField()
     location = models.CharField(max_length=50,choices=AREA_CHOICES, help_text='지역 선택',default='seoul')
     place = models.CharField(max_length=100)
@@ -50,6 +51,7 @@ class Post(models.Model):
     date_start = models.DateField(help_text='YYYY-MM-DD')
     date_end = models.DateField(help_text='YYYY-MM-DD')
     created = models.DateTimeField(auto_now_add=True)
+
 
     class Meta:
         ordering = ('-created',)
