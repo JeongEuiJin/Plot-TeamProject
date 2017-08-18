@@ -13,7 +13,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth import logout as django_logout
-from member.permissions import ObjectIsRequestUser
+from utilt.permissions import ObjectIsRequestUser
 from django.utils.translation import ugettext_lazy as _
 
 from .serializers import UserSerializer, UserCreationSerializer, UserLoginSerializer
