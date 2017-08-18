@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
 
     'member',
+    'post',
 
 
 ]
