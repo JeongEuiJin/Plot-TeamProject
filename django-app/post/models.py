@@ -27,6 +27,7 @@ class Post(models.Model):
         ('daegu', '대구'),
         ('ulsan', '울산'),
         ('gwangju', '광주'),
+        ('gyeonggi','경기도'),
         ('chungcheonnam', '충청남도'),
         ('chungcheonbuk', '충청북도'),
         ('gyeongsangnam', '경상남도'),
