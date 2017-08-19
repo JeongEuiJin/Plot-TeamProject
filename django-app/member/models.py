@@ -51,6 +51,7 @@ class UserManager(BaseUserManager):
         )
 
 
+
 class User(AbstractBaseUser, PermissionsMixin):
     USER_TYPE_DJANGO = 'django'
     USER_TYPE_FACEBOOK = 'facebook'
