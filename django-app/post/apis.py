@@ -33,3 +33,15 @@ class PostUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = (AllowAny,)
     queryset = Post.objects.all()
+
+
+class PostListFindAPIView(generics.ListAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = PostSerializer
+
+    def get_queryset(self):
+        search_title = self.request.query_params.get('q')
+        # search_title = self.request.poster_title
+        post_search = Post.objects.filter(poster_title__contains=search_title)
+
+        return post_search
