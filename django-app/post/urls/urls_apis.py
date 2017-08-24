@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^create/$',apis.PostCreateAPIView.as_view(),name='post_create'),
     url(r'^(?P<pk>\d+)/$',apis.PostUpdateDestroyAPIView.as_view(),name='post_updatedestory'),
     url(r'^post_search/$', apis.PostListFindAPIView.as_view(), name='post_search'),
+    url(r'^(?P<post_pk>\d+)/like-toggle/$', apis.PostLikeToggleView.as_view()),
 ]

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -54,10 +55,24 @@ class Post(models.Model):
     date_start = models.DateField(help_text='YYYY-MM-DD')
     date_end = models.DateField(help_text='YYYY-MM-DD')
     created = models.DateTimeField(auto_now_add=True)
-
+    like_users = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        related_name='like_posts',
+        through='PostLike',
+    )
 
     class Meta:
         ordering = ('-created',)
 
     def __str__(self):
         return self.poster_title
+
+class PostLike(models.Model):
+    post = models.ForeignKey(Post)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = (
+            ('post', 'user'),
+        )

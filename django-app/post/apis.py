@@ -1,4 +1,5 @@
 from rest_framework import generics, permissions
+from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -45,3 +46,13 @@ class PostListFindAPIView(generics.ListAPIView):
         post_search = Post.objects.filter(poster_title__contains=search_title)
 
         return post_search
+
+class PostLikeToggleView(APIView):
+    def post(self, request, post_pk):
+        post_instance = get_object_or_404(Post, pk=post_pk)
+        post_like, post_like_created = post_instance.postlike_set.get_or_create(
+            user=request.user
+        )
+        if not post_like_created:
+            post_like.delete()
+        return Response({'created': post_like_created})
